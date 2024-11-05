@@ -13,7 +13,6 @@ env:
   IMAGE_NAME: Yuu18id/bb
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +25,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y docker-compose
 
       - name: Build the Docker image
-        run: docker-compose build --no-cache --force-rm 
+        run: docker-compose -f docker-compose.yml build --no-cache --force-rm 
 
   test:
     runs-on: ubuntu-latest
@@ -37,7 +36,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y docker-compose
 
       - name: Test the Docker image
-        run: docker-compose up -d 
+        run: docker-compose -f docker-compose.yml up -d 
 
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -64,7 +63,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: . # Mengarahkan ke folder root proyek (pastikan docker-compose.yml berada di root proyek)
+          context: .  # Pastikan ini adalah direktori yang benar
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
