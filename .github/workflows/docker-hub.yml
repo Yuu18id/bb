@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: Yuu18id/bb
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
 
