@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Menjalankan aplikasi
-CMD ["npm", "start"]
+CMD ["wait-for-it", "db:3306", "--", "npm", "start"]
