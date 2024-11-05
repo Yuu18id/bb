@@ -9,7 +9,7 @@ services:
       - db
     environment:
       DB_HOST: localhost          # Nama service database
-      DB_USER: user     # Ganti dengan user MySQL yang Anda inginkan
+      DB_USER: root     # Ganti dengan user MySQL yang Anda inginkan
       DB_PASS: root  # Ganti dengan password yang Anda inginkan
       DB_NAME: web_chat     # Ganti dengan nama database yang Anda inginkan
 
@@ -18,7 +18,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: web_chat        # Nama database yang akan dibuat
-      MYSQL_USER: user             # User untuk akses database
+      MYSQL_USER: root             # User untuk akses database
       MYSQL_PASSWORD: root      # Password untuk user
       MYSQL_ROOT_PASSWORD: root # Password untuk root user
     ports:
