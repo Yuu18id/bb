@@ -1,20 +1,20 @@
 # Menggunakan image dasar Node.js
 FROM node:14
 
-# Set direktori kerja di dalam kontainer
-WORKDIR /usr/src/app
+# Mengatur direktori kerja di dalam kontainer
+WORKDIR /app
 
-# Menyalin file package.json dan package-lock.json
+# Menyalin package.json dan package-lock.json
 COPY package*.json ./
 
-# Menginstall dependensi aplikasi
+# Menginstal dependensi
 RUN npm install
 
-# Menyalin semua file aplikasi ke dalam kontainer
+# Menyalin semua file dari direktori saat ini ke dalam kontainer
 COPY . .
 
 # Mengekspos port yang digunakan oleh aplikasi
-EXPOSE 3000  # Ganti dengan port yang sesuai jika menggunakan port lain
+EXPOSE 3000
 
 # Menjalankan aplikasi
 CMD ["npm", "start"]
