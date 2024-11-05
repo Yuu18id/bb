@@ -21,4 +21,4 @@ RUN chmod +x /usr/local/bin/wait-for-it
 EXPOSE 3000
 
 # Menjalankan aplikasi dengan wait-for-it
-CMD ["wait-for-it", "db:3306", "--", "npm", "start"]
+CMD ["wait-for-it", "db:3306", "--", "npm", "run", "start"]
