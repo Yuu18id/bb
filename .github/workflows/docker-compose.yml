@@ -1,0 +1,13 @@
+version: '3.8'  # Versi Docker Compose
+
+services:  # Daftar layanan
+  app:  # Nama layanan
+    build:  # Build service dari Dockerfile
+      context: .  # Konteks build, biasanya direktori yang sama dengan docker-compose.yml
+      dockerfile: Dockerfile  # Nama Dockerfile (opsional jika namanya 'Dockerfile')
+    ports:
+      - "3000:3000"  # Menghubungkan port host ke port kontainer
+    environment:
+      NODE_ENV: development  # Variabel lingkungan
+    volumes:
+      - .:/usr/src/app  # Menghubungkan direktori kerja dengan host, untuk pengembangan
