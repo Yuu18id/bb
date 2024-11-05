@@ -1,13 +1,25 @@
-version: '3.8'  # Versi Docker Compose
-
-services:  # Daftar layanan
-  app:  # Nama layanan
-    build:  # Build service dari Dockerfile
-      context: .  # Konteks build, biasanya direktori yang sama dengan docker-compose.yml
-      dockerfile: Dockerfile  # Nama Dockerfile (opsional jika namanya 'Dockerfile')
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
     ports:
-      - "3000:3000"  # Menghubungkan port host ke port kontainer
+      - "3000:3000"
+    depends_on:
+      - db
     environment:
-      NODE_ENV: development  # Variabel lingkungan
-    volumes:
-      - .:/usr/src/app  # Menghubungkan direktori kerja dengan host, untuk pengembangan
+      DB_HOST: db  # Nama service database
+      DB_USER: my_user         # User yang Anda tentukan untuk database
+      DB_PASS: my_password      # Password untuk user tersebut
+      DB_NAME: web_chat         # Nama database yang akan digunakan
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: web_chat         # Nama database yang ingin dibuat
+      MYSQL_USER: my_user              # User yang akan dibuat
+      MYSQL_PASSWORD: my_password       # Password untuk user tersebut
+      MYSQL_ROOT_PASSWORD: root_password # Password untuk root MySQL
+    ports:
+      - "3306:3306"
