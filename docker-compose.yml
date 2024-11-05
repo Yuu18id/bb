@@ -9,8 +9,8 @@ services:
       - db
     environment:
       DB_HOST: db          # Nama service database
-      DB_USER: my_user     # Ganti dengan user MySQL yang Anda inginkan
-      DB_PASS: my_password  # Ganti dengan password yang Anda inginkan
+      DB_USER: user     # Ganti dengan user MySQL yang Anda inginkan
+      DB_PASS: root  # Ganti dengan password yang Anda inginkan
       DB_NAME: web_chat     # Ganti dengan nama database yang Anda inginkan
 
   db:
@@ -18,8 +18,8 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: web_chat        # Nama database yang akan dibuat
-      MYSQL_USER: my_user             # User untuk akses database
-      MYSQL_PASSWORD: my_password      # Password untuk user
-      MYSQL_ROOT_PASSWORD: root_password # Password untuk root user
+      MYSQL_USER: user             # User untuk akses database
+      MYSQL_PASSWORD: root      # Password untuk user
+      MYSQL_ROOT_PASSWORD: root # Password untuk root user
     ports:
       - "3306:3306"                    # Mengekspos port MySQL

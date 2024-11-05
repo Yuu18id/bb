@@ -18,7 +18,7 @@ COPY wait-for-it.sh /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/wait-for-it
 
 # Mengekspos port yang digunakan oleh aplikasi
-EXPOSE 3001
+EXPOSE 3002
 
 # Menjalankan aplikasi dengan wait-for-it
 CMD ["wait-for-it", "db:3306", "--", "npm", "run", "start"]
